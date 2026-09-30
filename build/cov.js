@@ -55,8 +55,15 @@ async function build(ctx) {
       if (!rid) continue;
       out.push({ id: 'cov:' + m.ds + ':' + rid, geom: g.geom, utm: g.utm, props: m.props(r, g) }); kept++;
     }
-    // records with the same id (a dataset quirk) are kept once
-    const seen = new Set(), uniq = out.filter((f) => (seen.has(f.id) ? false : (seen.add(f.id), true)));
+    // records with the same id (a dataset quirk: e.g. one site_id at two points) are kept once in a layer, the choice made
+    // by content, never by the export's order (which differs between fetches); the addresses joined to the buildings keep
+    // every point (their ids do not matter there)
+    let uniq = out;
+    if (!m.shared) {
+      const best = new Map(), key = (f) => JSON.stringify([f.utm, f.props]);
+      for (const f of out) { const b = best.get(f.id); if (!b || key(f) < key(b)) best.set(f.id, f); }
+      uniq = [...best.values()];
+    }
     if (m.shared) shared[m.shared] = uniq; else layers[m.layer] = uniq;
     notes.push(m.ds + ': ' + fc.features.length + ' records, ' + uniq.length + ' kept' + (outside ? ', ' + outside + ' outside the city' : '') + (uniq.length < kept ? ', ' + (kept - uniq.length) + ' duplicate ids' : ''));
   }

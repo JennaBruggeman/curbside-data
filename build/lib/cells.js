@@ -56,7 +56,8 @@ function writeLayer(root, layer, source, stamp, cells) {
   for (const f of layerFiles(root, layer)) fs.unlinkSync(f);
   const entry = { source, count: 0, cells: 0, bytes: 0, gzBytes: 0, maxGz: 0, perCell: {} }, ids = new Set();
   for (const k of [...cells.keys()].sort()) {
-    const feats = cells.get(k).map((f) => ({ type: 'Feature', id: f.id, properties: { id: f.id, layer, source, fetchedAt: stamp, props: f.props }, geometry: f.geometry }));
+    // features by id, so a file's bytes never depend on the order a source delivered its records in
+    const feats = cells.get(k).slice().sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)).map((f) => ({ type: 'Feature', id: f.id, properties: { id: f.id, layer, source, fetchedAt: stamp, props: f.props }, geometry: f.geometry }));
     feats.forEach((f) => ids.add(f.id));
     const body = (list) => JSON.stringify({ type: 'FeatureCollection', schemaVersion: SCHEMA, layer, cell: k, updatedAt: stamp, features: list });
     let parts = [feats], json = parts.map(body), gz = json.map((s) => zlib.gzipSync(s).length);

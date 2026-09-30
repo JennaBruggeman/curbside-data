@@ -76,7 +76,9 @@ async function build(ctx) {
   const poiIdx = bucketIndex(pois);
   const out = buildings.map((b) => {
     const c = b.ring.reduce((a, p) => [a[0] + p[0] / b.ring.length, a[1] + p[1] / b.ring.length], [0, 0]);
-    const near = (list) => list.sort((p, q) => Math.hypot(p.utm[0] - c[0], p.utm[1] - c[1]) - Math.hypot(q.utm[0] - c[0], q.utm[1] - c[1]))[0] || null;
+    // nearest the centroid; a tie decided by the text, never by the sources' order
+    const d = (p) => Math.round(Math.hypot(p.utm[0] - c[0], p.utm[1] - c[1]) * 1000);
+    const near = (list) => list.sort((p, q) => d(p) - d(q) || String(p.address || p.id).localeCompare(String(q.address || q.id)))[0] || null;
     const a = near(inside(addr, b.ring)), p = near(inside(poiIdx, b.ring));
     const bUse = useOf(b.tags), pUse = p ? useOf(p.tags) : null;
     const use = pUse && bUse === 'residential' && pUse !== 'residential' ? pUse : (pUse || bUse);
