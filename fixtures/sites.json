@@ -1,0 +1,20 @@
+{
+ "rb": {
+  "cell": "10_10",
+  "name": "Robson & Burrard",
+  "lon": -123.12291,
+  "lat": 49.28347
+ },
+ "cd": {
+  "cell": "14_8",
+  "name": "Commercial & 1st",
+  "lon": -123.06942,
+  "lat": 49.2701
+ },
+ "dn": {
+  "cell": "6_4",
+  "name": "W 41st & Dunbar",
+  "lon": -123.1845,
+  "lat": 49.23486
+ }
+}

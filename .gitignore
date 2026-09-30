@@ -1,0 +1,3 @@
+# downloads and working files of the build: never committed (the workflow downloads fresh)
+.cache/
+node_modules/

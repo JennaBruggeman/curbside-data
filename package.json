@@ -1,0 +1,8 @@
+{
+  "name": "curbside-data",
+  "private": true,
+  "description": "Vancouver site data for Curbside, in 1 km cells",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "engines": { "node": ">=24" },
+  "scripts": { "build": "node build/build.js", "check": "node build/check.js --sites" }
+}
