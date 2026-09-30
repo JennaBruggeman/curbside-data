@@ -38,7 +38,7 @@
    "name": "OpenStreetMap contributors (BBBike Vancouver extract)",
    "url": "https://download.bbbike.org/osm/bbbike/Vancouver/Vancouver.osm.pbf",
    "dataAt": "2026-09-25T23:00:00.000Z",
-   "updatedAt": "2026-09-30T17:46:05Z"
+   "updatedAt": "2026-09-30T23:07:56Z"
   }
  },
  "layers": {
@@ -47,13 +47,13 @@
    "geometry": "polygon",
    "licence": "ODbL-1.0 + OGL-Vancouver",
    "schemaVersion": 1,
-   "updatedAt": "2026-09-30T17:46:05Z",
+   "updatedAt": "2026-09-30T23:07:56Z",
    "count": 167506,
    "cells": 244,
-   "bytes": 82068387,
-   "gzBytes": 8244742,
+   "bytes": 82068397,
+   "gzBytes": 8244738,
    "maxGz": 105762,
-   "hash": "83c91ea32d71446d"
+   "hash": "e343fd8ae1dce0c2"
   },
   "streets": {
    "source": "osm",
@@ -210,7 +210,7 @@
   "5_-1": {
    "buildings": [
     4,
-    464,
+    463,
     1
    ],
    "streets": [
@@ -364,7 +364,7 @@
   "12_-1": {
    "buildings": [
     791,
-    39252,
+    39251,
     1
    ],
    "streets": [
@@ -630,7 +630,7 @@
   "10_0": {
    "buildings": [
     172,
-    11508,
+    11507,
     1
    ],
    "streets": [
@@ -852,7 +852,7 @@
   "5_1": {
    "buildings": [
     8,
-    701,
+    700,
     1
    ],
    "streets": [
@@ -930,7 +930,7 @@
   "9_1": {
    "buildings": [
     271,
-    21304,
+    21307,
     1
    ],
    "streets": [
@@ -1392,7 +1392,7 @@
   "3_2": {
    "buildings": [
     1,
-    311,
+    310,
     1
    ],
    "pois": [
@@ -2125,7 +2125,7 @@
   "6_3": {
    "buildings": [
     248,
-    12367,
+    12368,
     1
    ],
    "streets": [
@@ -2464,7 +2464,7 @@
   "13_3": {
    "buildings": [
     2288,
-    90878,
+    90879,
     1
    ],
    "streets": [
@@ -2780,7 +2780,7 @@
   "5_4": {
    "buildings": [
     734,
-    30263,
+    30262,
     1
    ],
    "streets": [
@@ -3493,7 +3493,7 @@
   "2_5": {
    "buildings": [
     2,
-    423,
+    424,
     1
    ],
    "streets": [
@@ -3542,7 +3542,7 @@
   "4_5": {
    "buildings": [
     41,
-    2251,
+    2250,
     1
    ],
    "streets": [
@@ -5029,7 +5029,7 @@
   "17_6": {
    "buildings": [
     2208,
-    91086,
+    91087,
     1
    ],
    "streets": [
@@ -6528,7 +6528,7 @@
   "11_8": {
    "buildings": [
     421,
-    32125,
+    32127,
     1
    ],
    "streets": [
@@ -7057,7 +7057,7 @@
   "4_9": {
    "buildings": [
     376,
-    17456,
+    17455,
     1
    ],
    "streets": [
@@ -9133,7 +9133,7 @@
   "16_13": {
    "buildings": [
     588,
-    32460,
+    32459,
     1
    ],
    "streets": [
@@ -9214,7 +9214,7 @@
   "8_14": {
    "buildings": [
     4,
-    606,
+    605,
     1
    ],
    "streets": [
@@ -9469,7 +9469,7 @@
   "18_14": {
    "buildings": [
     274,
-    17900,
+    17899,
     1
    ],
    "streets": [
@@ -9589,7 +9589,7 @@
   "9_15": {
    "buildings": [
     161,
-    11646,
+    11645,
     1
    ],
    "streets": [
@@ -9805,7 +9805,7 @@
   "17_15": {
    "buildings": [
     551,
-    31987,
+    31986,
     1
    ],
    "streets": [

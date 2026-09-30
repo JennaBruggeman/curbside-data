@@ -38,7 +38,7 @@
    "name": "OpenStreetMap contributors (BBBike Vancouver extract)",
    "url": "https://download.bbbike.org/osm/bbbike/Vancouver/Vancouver.osm.pbf",
    "dataAt": "2026-09-25T23:00:00.000Z",
-   "updatedAt": "2026-09-30T17:46:05Z"
+   "updatedAt": "2026-09-30T23:07:56Z"
   }
  },
  "layers": {
@@ -47,13 +47,13 @@
    "geometry": "polygon",
    "licence": "ODbL-1.0 + OGL-Vancouver",
    "schemaVersion": 1,
-   "updatedAt": "2026-09-30T17:46:05Z",
+   "updatedAt": "2026-09-30T23:07:56Z",
    "count": 167506,
    "cells": 244,
-   "bytes": 82068387,
-   "gzBytes": 8244742,
+   "bytes": 82068397,
+   "gzBytes": 8244738,
    "maxGz": 105762,
-   "hash": "83c91ea32d71446d"
+   "hash": "e343fd8ae1dce0c2"
   },
   "streets": {
    "source": "osm",
@@ -1055,7 +1055,7 @@
   "5_4": {
    "buildings": [
     734,
-    30263,
+    30262,
     1
    ],
    "streets": [
@@ -1159,7 +1159,7 @@
   "6_3": {
    "buildings": [
     248,
-    12367,
+    12368,
     1
    ],
    "streets": [
