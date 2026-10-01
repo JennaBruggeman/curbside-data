@@ -10,6 +10,8 @@ one constant `GIS.BASE`.
 
 ```
 index.json                     the cell list, per-layer updatedAt / counts / sizes / schemaVersion, the sources
+intersections.json             every node where differently named streets meet (OSM): {names, rows: [nameA, nameB, lon, lat]},
+                               for the app's "Main St & 20th Ave" search; written only when it changes
 cells/{cellId}/{layerId}.json  one GeoJSON FeatureCollection per cell per layer ({layerId}.1.json ... when split)
 fixtures/                      the cells around the three test sites (the app vendors them as test/gis-fixtures/)
 build/                         the Node scripts: one per source, the cell writer, the checks

@@ -57,6 +57,7 @@ async function build(ctx) {
   // pass: nodes near the city (their coordinates), tagged points; then the ways
   const ids = new Map(); let xs = new Float64Array(1 << 21), ys = new Float64Array(1 << 21), nn = 0;
   const pois = [], stops = [], streets = [], buildings = [];
+  const named = new Map();   // node id -> the street names through it (intersections.json)
   const stat = PBF.read(file, {
     node(id, lon, lat, t) {
       if (!G.nearCity(lon, lat)) return;
@@ -76,6 +77,7 @@ async function build(ctx) {
       const runs = []; let cur = [];
       for (const r of refs) { const k = ids.get(r); if (k === undefined) { if (cur.length > 1) runs.push(cur); cur = []; } else cur.push([xs[k], ys[k]]); }
       if (cur.length > 1) runs.push(cur);
+      if (isStreet && t.name && t.highway !== 'service') for (const r of refs) { if (!ids.has(r)) continue; let s = named.get(r); if (!s) named.set(r, s = new Set()); s.add(t.name); }
       if (isStreet && runs.length) streets.push({ id: 'osm:way:' + id, geom: 'Lines', utm: runs, props: streetProps(id, t) });
       if (isBldg && runs.length === 1 && runs[0].length === refs.length && refs[0] === refs[refs.length - 1] && refs.length >= 4) buildings.push({ id: 'osm:way:' + id, ring: runs[0], tags: t, wayId: id });
     }
@@ -98,10 +100,21 @@ async function build(ctx) {
       kind: b.tags.building, levels: num(b.tags['building:levels']), height: num(b.tags.height) } };
   });
   ctx.shared.osmBusStops = stops;
+  // intersections.json (Brief 25 item 9): every node where differently named streets meet, for the app's "Main St & 20th Ave"
+  // search. A name table and one row per node: [name index, name index, lon, lat] (a node of three names gives three rows)
+  const names = [], nIx = new Map(), rows = [], nameOf = (n) => { let i = nIx.get(n); if (i === undefined) { i = names.length; names.push(n); nIx.set(n, i); } return i; };
+  for (const [id, s] of named) {
+    if (s.size < 2) continue;
+    const k = ids.get(id), ll = G.ll([xs[k], ys[k]]), list = [...s].sort();
+    for (let a = 0; a < list.length; a++) for (let b = a + 1; b < list.length; b++) rows.push([list[a], list[b], ll[0], ll[1]]);
+  }
+  rows.sort((p, q) => (p[0] < q[0] ? -1 : p[0] > q[0] ? 1 : p[1] < q[1] ? -1 : p[1] > q[1] ? 1 : p[2] - q[2] || p[3] - q[3]));
+  const inter = { schemaVersion: 1, source: 'OpenStreetMap contributors (ODbL), named highway ways', names: null, rows: rows.map((r) => [nameOf(r[0]), nameOf(r[1]), r[2], r[3]]) };
+  inter.names = names;
   const notes = ['extract ' + (stat.timestamp || '?') + ': ' + stat.nodes + ' nodes, ' + stat.ways + ' ways read; ' + nn + ' nodes near the city',
     streets.length + ' streets, ' + out.length + ' buildings (' + out.filter((b) => b.props.address).length + ' with a City address), ' + pois.length + ' points of interest, ' + stops.length + ' OSM bus stops'];
   if (!(ctx.shared.addresses || []).length) notes.push('no City addresses (the City source failed): buildings are not published this run');
   return { layers: Object.assign({ streets, pois: pois.map((p) => ({ id: p.id, geom: p.geom, utm: p.utm, props: p.props })) }, (ctx.shared.addresses || []).length ? { buildings: out } : {}),
-    notes, meta: { name: 'OpenStreetMap contributors (BBBike Vancouver extract)', url: URL, dataAt: stat.timestamp } };
+    files: { 'intersections.json': inter }, notes: notes.concat([rows.length + ' intersections of named streets (intersections.json)']), meta: { name: 'OpenStreetMap contributors (BBBike Vancouver extract)', url: URL, dataAt: stat.timestamp } };
 }
 module.exports = { build, useOf };

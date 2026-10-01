@@ -75,6 +75,11 @@ const ctx = {
         log('  ' + L.id + ': ' + e.count + ' features in ' + e.cells + ' cells, ' + (e.bytes / 1048576).toFixed(1) + ' MB (' + (e.gzBytes / 1048576).toFixed(1) + ' MB gzipped, largest file ' + (e.maxGz / 1024).toFixed(0) + ' kB)' + (p ? ', was ' + p.count : ''));
       }
       if (changed || !sources[src]) sources[src] = Object.assign({}, res.meta, { updatedAt: stamp });
+      // a source's single files (osm: intersections.json), written only when their content changed
+      for (const [name, data] of Object.entries(res.files || {})) {
+        const f = path.join(ROOT, name), s = JSON.stringify(data) + '\n';
+        if (!fs.existsSync(f) || fs.readFileSync(f, 'utf8') !== s) { fs.writeFileSync(f, s); log('  ' + name + ' written (' + (s.length / 1024).toFixed(0) + ' kB)'); }
+      }
       log('  ' + ((Date.now() - t0) / 1000).toFixed(1) + ' s');
     } catch (e) {
       failed[src] = e.message; log('  FAILED: ' + e.message);
@@ -120,4 +125,5 @@ function writeFixtures(index) {
   }
   fs.writeFileSync(path.join(FIX, 'index.json'), JSON.stringify(Object.assign({}, index, { base: null, fixtures: true, cells }), null, 1) + '\n');
   fs.writeFileSync(path.join(FIX, 'sites.json'), JSON.stringify(sites, null, 1) + '\n');
+  if (fs.existsSync(path.join(ROOT, 'intersections.json'))) fs.copyFileSync(path.join(ROOT, 'intersections.json'), path.join(FIX, 'intersections.json'));
 }
