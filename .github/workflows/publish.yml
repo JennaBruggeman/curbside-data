@@ -1,0 +1,30 @@
+# Publish on every push to main (curbside Brief 25 item 28).
+# Pages builds this repo from the main branch (the "legacy" branch build), started by
+# GitHub's own push hook. In the app repo that hook twice did not fire for the source branch
+# when it went out in one push with another branch and a tag (the events API recorded only the other ref), and
+# the site stayed on the previous commit until a build was requested by hand. This job
+# requests the build itself, so a push publishes whether or not the hook fires; if the hook
+# did fire, the extra request is harmless (GitHub cancels the duplicate run).
+name: publish
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  pages: write
+jobs:
+  request-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request a Pages build of this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" --jq '.status'
+          for i in $(seq 1 24); do
+            sleep 10
+            b=$(gh api "repos/${{ github.repository }}/pages/builds/latest" --jq '[.status, .commit] | @tsv')
+            echo "$b"
+            case "$b" in built*"${{ github.sha }}"*) exit 0 ;; errored*"${{ github.sha }}"*) gh api -X POST "repos/${{ github.repository }}/pages/builds" --jq '.status' ;; esac
+          done
+          echo "Pages did not finish building ${{ github.sha }} within 4 minutes"; exit 1
