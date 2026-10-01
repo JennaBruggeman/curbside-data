@@ -56,7 +56,7 @@ const ctx = {
       for (const L of mine) {
         const feats = res.layers[L.id];
         if (!feats) { built[L.id] = { missing: true }; continue; }
-        const cells = C.assign(feats), ids = new Set(); cells.forEach((a) => a.forEach((f) => ids.add(f.id)));
+        const cells = C.assign(feats, L), ids = new Set(); cells.forEach((a) => a.forEach((f) => ids.add(f.id)));
         built[L.id] = { cells, hash: C.hashOf(cells), count: ids.size };
       }
       for (const L of mine) {

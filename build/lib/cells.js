@@ -6,28 +6,31 @@
 // their id in each (the app joins the pieces by id). Polygons (buildings) are simplified and written whole in every
 // cell their bounding box touches, so deduplicating by id is exact. A cell-layer file over 200 kB gzipped is split
 // into parts ({layer}.1.json, {layer}.2.json ...), never allowed to grow.
+// An exact layer (layers.js: the streets and buildings the app's import measures the site from) is not simplified and is
+// written to 7 decimals (about 1 cm, as Overpass gives it), so the import reads the geometry a live query would.
 const fs = require('fs'), path = require('path'), zlib = require('zlib'), crypto = require('crypto');
 const G = require('./geo');
 const SCHEMA = 1, LIMIT = 200 * 1024, TOL = 0.5;
 
-function assign(features) {
+function assign(features, layer) {
+  const exact = !!(layer && layer.exact), simp = exact ? (l) => l.slice() : (l) => G.simplify(l, TOL), simpRing = exact ? (r) => r.slice() : (r) => G.simplifyRing(r, TOL), ll = exact ? G.ll7 : G.ll;
   const cells = new Map();
   const put = (cx, cy, geometry, f) => { if (!G.inRange(cx, cy)) return; const k = G.cellId(cx, cy); let a = cells.get(k); if (!a) cells.set(k, a = []); a.push({ id: f.id, geometry, props: f.props }); };
   for (const f of features) {
-    if (f.geom === 'Point') { const [cx, cy] = G.cellOf(f.utm[0], f.utm[1]); put(cx, cy, { type: 'Point', coordinates: G.ll(f.utm) }, f); continue; }
+    if (f.geom === 'Point') { const [cx, cy] = G.cellOf(f.utm[0], f.utm[1]); put(cx, cy, { type: 'Point', coordinates: ll(f.utm) }, f); continue; }
     if (f.geom === 'Lines') {
-      const lines = f.utm.map((l) => G.simplify(l, TOL)).filter((l) => l.length > 1); if (!lines.length) continue;
+      const lines = f.utm.map(simp).filter((l) => l.length > 1); if (!lines.length) continue;
       const b = G.bboxOf(lines.flat()), [x0, y0] = G.cellOf(b[0], b[1]), [x1, y1] = G.cellOf(b[2], b[3]);
       for (let cx = x0; cx <= x1; cx++) for (let cy = y0; cy <= y1; cy++) {
         const r = G.cellRect(cx, cy), parts = [];
-        for (const l of lines) for (const p of G.clipLine(l, r)) parts.push(p.map(G.ll));
+        for (const l of lines) for (const p of G.clipLine(l, r)) parts.push(p.map(ll));
         if (parts.length) put(cx, cy, parts.length === 1 ? { type: 'LineString', coordinates: parts[0] } : { type: 'MultiLineString', coordinates: parts }, f);
       }
       continue;
     }
     if (f.geom === 'Polygon') {
-      const rings = f.utm.map((r) => G.simplifyRing(r, TOL)), b = G.bboxOf(rings[0]), [x0, y0] = G.cellOf(b[0], b[1]), [x1, y1] = G.cellOf(b[2], b[3]);
-      const geometry = { type: 'Polygon', coordinates: rings.map((r) => r.map(G.ll)) };
+      const rings = f.utm.map(simpRing), b = G.bboxOf(rings[0]), [x0, y0] = G.cellOf(b[0], b[1]), [x1, y1] = G.cellOf(b[2], b[3]);
+      const geometry = { type: 'Polygon', coordinates: rings.map((r) => r.map(ll)) };
       for (let cx = x0; cx <= x1; cx++) for (let cy = y0; cy <= y1; cy++) put(cx, cy, geometry, f);
       continue;
     }

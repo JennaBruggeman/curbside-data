@@ -40,6 +40,16 @@ function inside(B, ring) {
   for (let x = Math.floor(b[0] / 50); x <= Math.floor(b[2] / 50); x++) for (let y = Math.floor(b[1] / 50); y <= Math.floor(b[3] / 50); y++) for (const p of B.get(x + ',' + y) || []) if (G.pointInRing(p.utm[0], p.utm[1], ring)) out.push(p);
   return out;
 }
+// the points within max metres of a ring's edge (outside it), with their distance
+function nearRing(B, ring, max) {
+  const b = G.bboxOf(ring), out = [];
+  const dSeg = (p, a, c) => { const dx = c[0] - a[0], dy = c[1] - a[1], L2 = dx * dx + dy * dy, t = L2 ? Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L2)) : 0; return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy); };
+  for (let x = Math.floor((b[0] - max) / 50); x <= Math.floor((b[2] + max) / 50); x++) for (let y = Math.floor((b[1] - max) / 50); y <= Math.floor((b[3] + max) / 50); y++) for (const p of B.get(x + ',' + y) || []) {
+    let d = Infinity; for (let i = 1; i < ring.length; i++) d = Math.min(d, dSeg(p.utm, ring[i - 1], ring[i]));
+    if (d <= max) out.push({ p, d });
+  }
+  return out;
+}
 
 async function build(ctx) {
   const file = path.join(ctx.cache, 'Vancouver.osm.pbf');
@@ -70,7 +80,8 @@ async function build(ctx) {
       if (isBldg && runs.length === 1 && runs[0].length === refs.length && refs[0] === refs[refs.length - 1] && refs.length >= 4) buildings.push({ id: 'osm:way:' + id, ring: runs[0], tags: t, wayId: id });
     }
   });
-  // buildings: the civic address inside (the one nearest the centroid when there are several), the use and name of the
+  // buildings: the civic address inside (the one nearest the centroid when there are several), else the nearest within
+  // 15 m of the footprint (the app's rule, Brief 19 C: a house set back behind its address point); the use and name of the
   // shop / office inside (a shop in a residential building makes the frontage a shop, as in the app)
   const addr = bucketIndex((ctx.shared.addresses || []).map((a) => ({ utm: a.utm, address: a.props.address })));
   const poiIdx = bucketIndex(pois);
@@ -79,7 +90,8 @@ async function build(ctx) {
     // nearest the centroid; a tie decided by the text, never by the sources' order
     const d = (p) => Math.round(Math.hypot(p.utm[0] - c[0], p.utm[1] - c[1]) * 1000);
     const near = (list) => list.sort((p, q) => d(p) - d(q) || String(p.address || p.id).localeCompare(String(q.address || q.id)))[0] || null;
-    const a = near(inside(addr, b.ring)), p = near(inside(poiIdx, b.ring));
+    const near15 = () => { const o = nearRing(addr, b.ring, 15).sort((x, y) => Math.round(x.d * 1000) - Math.round(y.d * 1000) || String(x.p.address).localeCompare(String(y.p.address)))[0]; return o ? o.p : null; };
+    const a = near(inside(addr, b.ring)) || near15(), p = near(inside(poiIdx, b.ring));
     const bUse = useOf(b.tags), pUse = p ? useOf(p.tags) : null;
     const use = pUse && bUse === 'residential' && pUse !== 'residential' ? pUse : (pUse || bUse);
     return { id: b.id, geom: 'Polygon', utm: [b.ring], props: { osmId: 'way/' + b.wayId, address: a ? a.address : null, use, name: (p && p.tags.name) || b.tags.name || null,

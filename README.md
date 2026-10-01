@@ -27,8 +27,8 @@ written whole in every cell they touch, so deduplicating by `id` is exact.
   Datasets without a record id use a hash of the record.
 - `properties`: `id`, `layer`, `source` (`cov` | `osm` | `gtfs`), `fetchedAt`, and `props`, which holds **normalised
   names only**. Raw source fields never reach the app.
-- Lines and polygons are simplified at 0.5 m (Douglas–Peucker). Points are untouched.
-- Coordinates are WGS84 lon / lat, 6 decimals.
+- Streets and buildings (the geometry the app measures a site from) are written exactly as OpenStreetMap has them, to 7 decimals. The other lines are simplified at 0.5 m (Douglas–Peucker). Points are untouched.
+- Coordinates are WGS84 lon / lat, 6 decimals (7 for streets and buildings).
 - Each file is at most 200 kB gzipped; a larger one is split into parts, never allowed to grow.
 
 ## Layers
@@ -49,7 +49,7 @@ written whole in every cell they touch, so deduplicating by `id` is exact.
 | `pois` | OSM `amenity` / `shop` / `office` nodes | point | `osmId, name, kind, category, use` |
 
 A building's `use` follows the app's rule: a shop or office inside the building sets it, even in a residential building.
-Its `address` is the City civic address inside the footprint that is nearest the centroid. The City's right-of-way
+Its `address` is the City civic address inside the footprint that is nearest the centroid, else the one nearest the footprint within 15 m (the app's rule). The City's right-of-way
 widths are published in feet with no unit stated; `width` is converted to metres.
 
 ## index.json

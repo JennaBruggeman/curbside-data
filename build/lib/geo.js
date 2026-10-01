@@ -1,6 +1,6 @@
 'use strict';
 // The build's geometry: UTM zone 10N (EPSG:32610) on WGS84, the 1 km cell grid, line clipping and Douglas-Peucker
-// simplification. Everything is computed in UTM metres and written as lon / lat (GeoJSON), 6 decimals (about 0.1 m).
+// simplification. Everything is computed in UTM metres and written as lon / lat (GeoJSON), 6 decimals (about 0.1 m; the exact layers 7: cells.js).
 
 // ── UTM 10N (Snyder, Map Projections: A Working Manual, pp. 61-64) ─────────────────────────────────────────────────
 const A = 6378137, F = 1 / 298.257223563, K0 = 0.9996, E2 = F * (2 - F), EP2 = E2 / (1 - E2), LON0 = -123 * Math.PI / 180;
@@ -83,7 +83,8 @@ function simplify(pts, tol) {
 function simplifyRing(ring, tol) { const s = simplify(ring, tol); return s.length >= 4 ? s : ring; }
 const bboxOf = (pts) => { let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; for (const [x, y] of pts) { if (x < x0) x0 = x; if (y < y0) y0 = y; if (x > x1) x1 = x; if (y > y1) y1 = y; } return [x0, y0, x1, y1]; };
 const pointInRing = (x, y, ring) => { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; };
-const r6 = (v) => Math.round(v * 1e6) / 1e6;
+const r6 = (v) => Math.round(v * 1e6) / 1e6, r7 = (v) => Math.round(v * 1e7) / 1e7;
 const ll = (p) => { const q = fromUTM(p[0], p[1]); return [r6(q[0]), r6(q[1])]; };
+const ll7 = (p) => { const q = fromUTM(p[0], p[1]); return [r7(q[0]), r7(q[1])]; };   // the exact layers (cells.js)
 
-module.exports = { toUTM, fromUTM, BBOX, CELL, ORIGIN, RANGE, cellOf, cellId, cellRect, inRange, nearCity, clipLine, simplify, simplifyRing, bboxOf, pointInRing, ll };
+module.exports = { toUTM, fromUTM, BBOX, CELL, ORIGIN, RANGE, cellOf, cellId, cellRect, inRange, nearCity, clipLine, simplify, simplifyRing, bboxOf, pointInRing, ll, ll7 };
