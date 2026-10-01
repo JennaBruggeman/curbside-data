@@ -37,6 +37,7 @@ written whole in every cell they touch, so deduplicating by `id` is exact.
 
 | layerId | source | geometry | props |
 |---|---|---|---|
+| `parks` | City `parks-polygon-representation` | polygon | `name, classification` (the app's city context past the import radius) |
 | `buildings` | OSM `building=*` ways + City `property-addresses` | polygon | `osmId, address, use, name, kind, levels, height` |
 | `streets` | OSM ways, the app's highway classes | line | `wayId, name, highway, oneway (yes/no/reverse), lanes, lanesForward, lanesBackward, width, cycleway {left, right}, parking {left, right}, maxspeed` |
 | `bikeways` | City `bikeways` (Active) | line | `type, subtype, name, side` (`side` is `approx`: the data is centreline-based) |

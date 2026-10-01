@@ -19,6 +19,9 @@ const MAP = [
   { layer: 'trees', ds: 'public-trees', select: 'asset_id,common_name,genus_name,species_name,cultivar_name,height_m,diameter_cm,local_area', id: 'asset_id',
     props: (r) => ({ species: s(r.common_name), genus: s(r.genus_name), speciesName: s(r.species_name), cultivar: s(r.cultivar_name), dbh: n(r.diameter_cm), height: n(r.height_m), area: s(r.local_area) }) },
   { layer: 'transit-stations', ds: 'rapid-transit-stations', select: 'station', id: null, props: (r) => ({ name: s(r.station) }) },   // (two stations share a name: not an id)
+  // the parks the app's city context draws past the import radius (curbside Brief 25 item 29: the import asks the City nothing live)
+  { layer: 'parks', ds: 'parks-polygon-representation', select: 'object_id,park_name,classification', id: 'object_id',
+    props: (r) => ({ name: s(r.park_name), classification: s(r.classification) }) },
   // not a layer: the civic addresses joined to the buildings (osm.js)
   { shared: 'addresses', ds: 'property-addresses', select: 'civic_number,std_street,site_id', id: 'site_id',
     props: (r) => ({ address: [s(r.civic_number), s(r.std_street)].filter(Boolean).join(' ') || null }) }
@@ -37,6 +40,10 @@ function geomOf(g) {
     const utm = lines.map((l) => l.map(U)), a = utm[0][0], z = utm[utm.length - 1][utm[utm.length - 1].length - 1];
     return { geom: 'Lines', utm, bearing: (Math.atan2(z[0] - a[0], z[1] - a[1]) * 180 / Math.PI + 360) % 360 };
   }
+  // polygons (the parks): the outer rings with their holes; a MultiPolygon is one feature per part (id #1, #2 ...)
+  const rings = (p) => p.map((r) => r.map(U));
+  if (g.type === 'Polygon') return g.coordinates[0].some(near) ? { geom: 'Polygon', utm: rings(g.coordinates) } : null;
+  if (g.type === 'MultiPolygon') { const parts = g.coordinates.filter((p) => p[0].some(near)).map(rings); return parts.length ? { geom: 'MultiPolygon', parts } : null; }
   return null;
 }
 
@@ -53,7 +60,9 @@ async function build(ctx) {
       const g = geomOf(f.geometry); if (!g) { outside++; continue; }
       const rid = m.id ? s(r[m.id]) : crypto.createHash('sha1').update(JSON.stringify([f.geometry, r])).digest('hex').slice(0, 12);
       if (!rid) continue;
-      out.push({ id: 'cov:' + m.ds + ':' + rid, geom: g.geom, utm: g.utm, props: m.props(r, g) }); kept++;
+      if (g.geom === 'MultiPolygon') g.parts.forEach((u, k) => out.push({ id: 'cov:' + m.ds + ':' + rid + (g.parts.length > 1 ? '#' + (k + 1) : ''), geom: 'Polygon', utm: u, props: m.props(r, g) }));
+      else out.push({ id: 'cov:' + m.ds + ':' + rid, geom: g.geom, utm: g.utm, props: m.props(r, g) });
+      kept++;
     }
     // records with the same id (a dataset quirk: e.g. one site_id at two points) are kept once in a layer, the choice made
     // by content, never by the export's order (which differs between fetches); the addresses joined to the buildings keep
