@@ -43,6 +43,7 @@ written whole in every cell they touch, so deduplicating by `id` is exact.
 | `bikeways` | City `bikeways` (Active) | line | `type, subtype, name, side` (`side` is `approx`: the data is centreline-based) |
 | `truck-routes` | City `truck-routes` | line | `name` |
 | `one-way` | City `one-way-streets` | line | `name, use, direction` (bearing of the drawn line) |
+| `blockfaces` | derived from `streets`, `bus-stops`, `hydrants`, `bikeways`, `bus-routes`, `truck-routes` (`build/blockfaces.js`, run after the others) | line (the street centreline; the app offsets it to the curb by `offM`) | `wayId, name, side (left/right of the way), offM (m, signed), eligibility (eligible-estimate / excluded / needs-measurement), reasons[] (bus_zone, no_parking_lane, bike_lane, corner, hydrant, lane_width_estimate), detail[] (plain words), s0, s1 (m along the face), faceLen, route` — where a parklet could go: an estimate from the City and OSM data, never a check result (Curbside Brief 30 §2) |
 | `bus-routes` | TransLink GTFS `routes` + `trips` + `shapes`, bus only | line | `route, name, routeId` |
 | `row-width` | City `right-of-way-widths` | point (label) | `width` (m), `widthFt` — property line to property line, **not curb-to-curb** |
 | `bus-stops` | TransLink GTFS `stops` + `stop_times` | point | `stopId, code, name, routes[], osm` (the OSM `highway=bus_stop` within 20 m, or null) |
