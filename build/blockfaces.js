@@ -22,8 +22,9 @@
 //                      bike_lane  a City bikeway (painted or protected) runs along the street but OSM does not say
 //                                 which side or where (the app then assumes it on the parklet's side)
 //   eligible-estimate  none of the above (every value an estimate: confirm on site)
-// A stop or a hydrant belongs to the one face it is nearest (laterally), within the street's estimated half width
-// + 12 m, on the side its position gives.
+// A stop or a hydrant belongs to every face it stands beside: its projection falls inside the face (not past its ends),
+// within the street's estimated half width + 12 m, on the side its position gives. A corner hydrant is beside both
+// streets' faces, as the app's import (every object on the parklet's half, between the curb returns) takes it.
 const fs = require('fs'), path = require('path'), G = require('./lib/geo');
 const ROOT = path.resolve(__dirname, '..'), CELLS = path.join(ROOT, 'cells');
 const HW = /^(primary|secondary|tertiary|residential|unclassified|living_street)$/;
@@ -141,14 +142,12 @@ async function build() {
   const faceB = new Map();
   faces.forEach((f, fi) => { if (f.side !== 'left') return; for (let i = 1; i < f.seg.length; i++) { const k = Math.floor((f.seg[i][0] + f.seg[i - 1][0]) / 200) + ',' + Math.floor((f.seg[i][1] + f.seg[i - 1][1]) / 200); let a = faceB.get(k); if (!a) faceB.set(k, a = []); if (a[a.length - 1] !== fi) a.push(fi); } });
   const place = (pt, what) => {
-    let best = null;
+    const seen = new Set();
     for (let x = Math.floor(pt.pt[0] / 100) - 1; x <= Math.floor(pt.pt[0] / 100) + 1; x++) for (let y = Math.floor(pt.pt[1] / 100) - 1; y <= Math.floor(pt.pt[1] / 100) + 1; y++) for (const fi of faceB.get(x + ',' + y) || []) {
-      const f = faces[fi], pr = project(f.seg, f.cum, pt.pt); if (!pr || pr.d > f.half + 12) continue;
-      if (!best || pr.d < best.pr.d) best = { fi, pr };
+      if (seen.has(fi)) continue; seen.add(fi);
+      const fl = faces[fi], pr = project(fl.seg, fl.cum, pt.pt); if (!pr || pr.end || pr.d > fl.half + 12) continue;
+      (pr.lat >= 0 ? fl : faces[fi + 1]).pts.push({ what, s: pr.s, pt });   // the left face, or its right twin
     }
-    if (!best) return;
-    const fl = faces[best.fi], fr = faces[best.fi + 1], f = best.pr.lat >= 0 ? fl : fr;   // the left face, then its right twin
-    f.pts.push({ what, s: best.pr.s, pt });
   };
   stops.forEach((s) => place(s, 'bus_zone')); hyd.forEach((h) => place(h, 'hydrant'));
 

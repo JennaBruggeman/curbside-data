@@ -31,7 +31,7 @@
   "derived": {
    "name": "Derived from the cells (Curbside Brief 30 §2)",
    "url": "https://github.com/JennaBruggeman/curbside-data/blob/main/build/blockfaces.js",
-   "updatedAt": "2026-10-04T03:49:58Z"
+   "updatedAt": "2026-10-04T04:01:51Z"
   },
   "gtfs": {
    "name": "TransLink GTFS",
@@ -130,13 +130,13 @@
    "geometry": "line",
    "licence": "ODbL-1.0 + OGL-Vancouver + TransLink GTFS (derived)",
    "schemaVersion": 1,
-   "updatedAt": "2026-10-04T03:49:58Z",
-   "count": 110656,
+   "updatedAt": "2026-10-04T04:01:51Z",
+   "count": 119436,
    "cells": 235,
-   "bytes": 62241788,
-   "gzBytes": 3488541,
-   "maxGz": 39522,
-   "hash": "dc553d7d48974a05"
+   "bytes": 67233207,
+   "gzBytes": 3843517,
+   "maxGz": 44473,
+   "hash": "1d33e72ee92f8d4d"
   },
   "bus-routes": {
    "source": "gtfs",
@@ -263,8 +263,8 @@
     1
    ],
    "blockfaces": [
-    1004,
-    34098,
+    1123,
+    39408,
     1
    ],
    "bus-routes": [
@@ -330,8 +330,8 @@
     1
    ],
    "blockfaces": [
-    285,
-    10591,
+    299,
+    11169,
     1
    ],
    "bus-routes": [
@@ -397,8 +397,8 @@
     1
    ],
    "blockfaces": [
-    1100,
-    37671,
+    1189,
+    41381,
     1
    ],
    "bus-routes": [
@@ -469,8 +469,8 @@
     1
    ],
    "blockfaces": [
-    984,
-    34522,
+    1095,
+    39087,
     1
    ],
    "bus-routes": [
@@ -568,8 +568,8 @@
     1
    ],
    "blockfaces": [
-    702,
-    25139,
+    772,
+    28072,
     1
    ],
    "bus-routes": [
@@ -640,8 +640,8 @@
     1
    ],
    "blockfaces": [
-    998,
-    29072,
+    1111,
+    33724,
     1
    ],
    "bus-routes": [
@@ -707,8 +707,8 @@
     1
    ],
    "blockfaces": [
-    687,
-    21869,
+    756,
+    24464,
     1
    ],
    "bus-routes": [
@@ -774,8 +774,8 @@
     1
    ],
    "blockfaces": [
-    756,
-    22191,
+    817,
+    24598,
     1
    ],
    "bus-routes": [
@@ -836,8 +836,8 @@
     1
    ],
    "blockfaces": [
-    937,
-    28549,
+    1035,
+    32618,
     1
    ],
    "bus-routes": [
@@ -903,8 +903,8 @@
     1
    ],
    "blockfaces": [
-    1000,
-    31002,
+    1114,
+    35472,
     1
    ],
    "bus-routes": [
@@ -970,8 +970,8 @@
     1
    ],
    "blockfaces": [
-    1174,
-    33719,
+    1295,
+    38531,
     1
    ],
    "bus-routes": [
@@ -1032,8 +1032,8 @@
     1
    ],
    "blockfaces": [
-    865,
-    24834,
+    951,
+    28266,
     1
    ],
    "bus-routes": [
@@ -1094,8 +1094,8 @@
     1
    ],
    "blockfaces": [
-    1081,
-    29845,
+    1212,
+    35092,
     1
    ],
    "bus-routes": [
@@ -1156,8 +1156,8 @@
     1
    ],
    "blockfaces": [
-    1060,
-    29733,
+    1167,
+    33984,
     1
    ],
    "bus-routes": [
@@ -1208,8 +1208,8 @@
     1
    ],
    "blockfaces": [
-    96,
-    3483,
+    102,
+    3751,
     1
    ],
    "row-width": [
@@ -1260,8 +1260,8 @@
     1
    ],
    "blockfaces": [
-    498,
-    17081,
+    520,
+    18107,
     1
    ],
    "bus-routes": [
@@ -1322,8 +1322,8 @@
     1
    ],
    "blockfaces": [
-    506,
-    13582,
+    567,
+    15895,
     1
    ],
    "bus-routes": [
@@ -1379,8 +1379,8 @@
     1
    ],
    "blockfaces": [
-    212,
-    6483,
+    231,
+    7223,
     1
    ],
    "row-width": [
@@ -1431,8 +1431,8 @@
     1
    ],
    "blockfaces": [
-    577,
-    17539,
+    630,
+    19669,
     1
    ],
    "bus-routes": [
@@ -1493,8 +1493,8 @@
     1
    ],
    "blockfaces": [
-    582,
-    15353,
+    645,
+    17627,
     1
    ],
    "bus-routes": [
@@ -1555,8 +1555,8 @@
     1
    ],
    "blockfaces": [
-    144,
-    5006,
+    153,
+    5356,
     1
    ],
    "row-width": [
@@ -1607,8 +1607,8 @@
     1
    ],
    "blockfaces": [
-    688,
-    20433,
+    770,
+    23618,
     1
    ],
    "bus-routes": [
@@ -1664,8 +1664,8 @@
     1
    ],
    "blockfaces": [
-    605,
-    16282,
+    681,
+    19281,
     1
    ],
    "bus-routes": [
@@ -1731,8 +1731,8 @@
     1
    ],
    "blockfaces": [
-    683,
-    21964,
+    747,
+    24650,
     1
    ],
    "bus-routes": [
@@ -1798,8 +1798,8 @@
     1
    ],
    "blockfaces": [
-    442,
-    15092,
+    473,
+    16493,
     1
    ],
    "bus-routes": [
@@ -1865,8 +1865,8 @@
     1
    ],
    "blockfaces": [
-    334,
-    11798,
+    356,
+    12798,
     1
    ],
    "bus-routes": [
