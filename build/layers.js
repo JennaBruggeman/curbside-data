@@ -8,6 +8,7 @@ module.exports = [
   { id: 'bikeways',         source: 'cov',  geometry: 'line',    licence: 'OGL-Vancouver', props: ['type', 'subtype', 'name', 'side'] },
   { id: 'truck-routes',     source: 'cov',  geometry: 'line',    licence: 'OGL-Vancouver', props: ['name'] },
   { id: 'one-way',          source: 'cov',  geometry: 'line',    licence: 'OGL-Vancouver', props: ['name', 'use', 'direction'] },
+  { id: 'blockfaces',       source: 'derived', geometry: 'line', licence: 'ODbL-1.0 + OGL-Vancouver + TransLink GTFS (derived)', props: ['wayId', 'name', 'side', 'offM', 'eligibility', 'reasons', 'detail', 's0', 's1', 'faceLen', 'route'] },
   { id: 'bus-routes',       source: 'gtfs', geometry: 'line',    licence: 'TransLink GTFS', props: ['route', 'name', 'routeId'] },
   { id: 'row-width',        source: 'cov',  geometry: 'point',   licence: 'OGL-Vancouver', props: ['width', 'widthFt'] },
   { id: 'bus-stops',        source: 'gtfs', geometry: 'point',   licence: 'TransLink GTFS + ODbL-1.0', props: ['stopId', 'code', 'name', 'routes', 'osm'] },

@@ -1,5 +1,5 @@
 'use strict';
-// Builds the cells:  node build/build.js [--fresh] [--only=cov,osm,gtfs]
+// Builds the cells:  node build/build.js [--fresh] [--only=cov,osm,gtfs,derived]
 //   --fresh   downloads the OSM extract and the GTFS feed again (the workflow always does); the City is always live
 //   --only    rebuilds only those sources; the other layers keep their files and index entries
 // Rules (Brief 24 A4): each source is independent. A source that fails, or one of whose layers drops more than 30 %
@@ -9,7 +9,8 @@
 const fs = require('fs'), path = require('path');
 const LAYERS = require('./layers'), C = require('./lib/cells'), G = require('./lib/geo');
 const ROOT = path.resolve(__dirname, '..'), CACHE = path.join(ROOT, '.cache'), IDX = path.join(ROOT, 'index.json'), FIX = path.join(ROOT, 'fixtures');
-const SOURCES = { cov: require('./cov'), osm: require('./osm'), gtfs: require('./gtfs') }, ORDER = ['cov', 'osm', 'gtfs'];
+// derived: built from the cells the other sources have just written (Curbside Brief 30 §2: blockfaces); last, always
+const SOURCES = { cov: require('./cov'), osm: require('./osm'), gtfs: require('./gtfs'), derived: require('./blockfaces') }, ORDER = ['cov', 'osm', 'gtfs', 'derived'];
 const DROP = 0.30, BASE = 'https://jennabruggeman.github.io/curbside-data/';
 // the three sites every VERIFY runs at (the app's test sites): their cell and its eight neighbours are the fixtures
 const SITES = { rb: { name: 'Robson & Burrard', lon: -123.12291, lat: 49.28347 }, cd: { name: 'Commercial & 1st', lon: -123.06942, lat: 49.27010 }, dn: { name: 'W 41st & Dunbar', lon: -123.18450, lat: 49.23486 } };

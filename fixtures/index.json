@@ -28,6 +28,11 @@
    "url": "https://opendata.vancouver.ca/",
    "updatedAt": "2026-10-01T03:54:57Z"
   },
+  "derived": {
+   "name": "Derived from the cells (Curbside Brief 30 §2)",
+   "url": "https://github.com/JennaBruggeman/curbside-data/blob/main/build/blockfaces.js",
+   "updatedAt": "2026-10-04T04:01:51Z"
+  },
   "gtfs": {
    "name": "TransLink GTFS",
    "url": "https://gtfs-static.translink.ca/gtfs/google_transit.zip",
@@ -123,6 +128,19 @@
    "gzBytes": 20830,
    "maxGz": 2342,
    "hash": "61daf23d96a6dba3"
+  },
+  "blockfaces": {
+   "source": "derived",
+   "geometry": "line",
+   "licence": "ODbL-1.0 + OGL-Vancouver + TransLink GTFS (derived)",
+   "schemaVersion": 1,
+   "updatedAt": "2026-10-04T04:01:51Z",
+   "count": 119436,
+   "cells": 235,
+   "bytes": 67233207,
+   "gzBytes": 3843517,
+   "maxGz": 44473,
+   "hash": "1d33e72ee92f8d4d"
   },
   "bus-routes": {
    "source": "gtfs",
@@ -250,6 +268,11 @@
     1759,
     1
    ],
+   "blockfaces": [
+    1123,
+    39408,
+    1
+   ],
    "bus-routes": [
     184,
     3449,
@@ -312,6 +335,11 @@
     327,
     1
    ],
+   "blockfaces": [
+    299,
+    11169,
+    1
+   ],
    "bus-routes": [
     55,
     1178,
@@ -372,6 +400,11 @@
    "one-way": [
     64,
     2342,
+    1
+   ],
+   "blockfaces": [
+    1189,
+    41381,
     1
    ],
    "bus-routes": [
@@ -439,6 +472,11 @@
    "one-way": [
     59,
     2051,
+    1
+   ],
+   "blockfaces": [
+    1095,
+    39087,
     1
    ],
    "bus-routes": [
@@ -535,6 +573,11 @@
     2325,
     1
    ],
+   "blockfaces": [
+    772,
+    28072,
+    1
+   ],
    "bus-routes": [
     48,
     1854,
@@ -602,6 +645,11 @@
     290,
     1
    ],
+   "blockfaces": [
+    1111,
+    33724,
+    1
+   ],
    "bus-routes": [
     21,
     730,
@@ -662,6 +710,11 @@
    "one-way": [
     3,
     371,
+    1
+   ],
+   "blockfaces": [
+    756,
+    24464,
     1
    ],
    "bus-routes": [
@@ -726,6 +779,11 @@
     445,
     1
    ],
+   "blockfaces": [
+    817,
+    24598,
+    1
+   ],
    "bus-routes": [
     11,
     494,
@@ -781,6 +839,11 @@
    "truck-routes": [
     1,
     805,
+    1
+   ],
+   "blockfaces": [
+    1035,
+    32618,
     1
    ],
    "bus-routes": [
@@ -845,6 +908,11 @@
     537,
     1
    ],
+   "blockfaces": [
+    1114,
+    35472,
+    1
+   ],
    "bus-routes": [
     45,
     1091,
@@ -907,6 +975,11 @@
     435,
     1
    ],
+   "blockfaces": [
+    1295,
+    38531,
+    1
+   ],
    "bus-routes": [
     19,
     639,
@@ -962,6 +1035,11 @@
    "truck-routes": [
     1,
     610,
+    1
+   ],
+   "blockfaces": [
+    951,
+    28266,
     1
    ],
    "bus-routes": [
@@ -1021,6 +1099,11 @@
     530,
     1
    ],
+   "blockfaces": [
+    1212,
+    35092,
+    1
+   ],
    "bus-routes": [
     38,
     816,
@@ -1078,6 +1161,11 @@
     486,
     1
    ],
+   "blockfaces": [
+    1167,
+    33984,
+    1
+   ],
    "bus-routes": [
     20,
     466,
@@ -1125,6 +1213,11 @@
     475,
     1
    ],
+   "blockfaces": [
+    102,
+    3751,
+    1
+   ],
    "row-width": [
     16,
     664,
@@ -1170,6 +1263,11 @@
    "truck-routes": [
     1,
     445,
+    1
+   ],
+   "blockfaces": [
+    520,
+    18107,
     1
    ],
    "bus-routes": [
@@ -1229,6 +1327,11 @@
     295,
     1
    ],
+   "blockfaces": [
+    567,
+    15895,
+    1
+   ],
    "bus-routes": [
     4,
     362,
@@ -1281,6 +1384,11 @@
     767,
     1
    ],
+   "blockfaces": [
+    231,
+    7223,
+    1
+   ],
    "row-width": [
     52,
     1433,
@@ -1326,6 +1434,11 @@
    "truck-routes": [
     1,
     593,
+    1
+   ],
+   "blockfaces": [
+    630,
+    19669,
     1
    ],
    "bus-routes": [
@@ -1385,6 +1498,11 @@
     462,
     1
    ],
+   "blockfaces": [
+    645,
+    17627,
+    1
+   ],
    "bus-routes": [
     18,
     486,
@@ -1442,6 +1560,11 @@
     443,
     1
    ],
+   "blockfaces": [
+    153,
+    5356,
+    1
+   ],
    "row-width": [
     51,
     1431,
@@ -1487,6 +1610,11 @@
    "truck-routes": [
     1,
     435,
+    1
+   ],
+   "blockfaces": [
+    770,
+    23618,
     1
    ],
    "bus-routes": [
@@ -1539,6 +1667,11 @@
    "truck-routes": [
     1,
     451,
+    1
+   ],
+   "blockfaces": [
+    681,
+    19281,
     1
    ],
    "bus-routes": [
@@ -1603,6 +1736,11 @@
     331,
     1
    ],
+   "blockfaces": [
+    747,
+    24650,
+    1
+   ],
    "bus-routes": [
     11,
     620,
@@ -1665,6 +1803,11 @@
     294,
     1
    ],
+   "blockfaces": [
+    473,
+    16493,
+    1
+   ],
    "bus-routes": [
     55,
     1525,
@@ -1725,6 +1868,11 @@
    "one-way": [
     4,
     419,
+    1
+   ],
+   "blockfaces": [
+    356,
+    12798,
     1
    ],
    "bus-routes": [
