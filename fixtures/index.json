@@ -26,24 +26,24 @@
   "cov": {
    "name": "City of Vancouver Open Data",
    "url": "https://opendata.vancouver.ca/",
-   "updatedAt": "2026-10-01T03:54:57Z"
+   "updatedAt": "2026-10-12T13:26:17Z"
   },
   "derived": {
    "name": "Derived from the cells (Curbside Brief 30 §2)",
    "url": "https://github.com/JennaBruggeman/curbside-data/blob/main/build/blockfaces.js",
-   "updatedAt": "2026-10-04T04:01:51Z"
+   "updatedAt": "2026-10-12T13:26:17Z"
   },
   "gtfs": {
    "name": "TransLink GTFS",
    "url": "https://gtfs-static.translink.ca/gtfs/google_transit.zip",
-   "feedVersion": "26SEP_20261002",
-   "updatedAt": "2026-10-05T13:10:23Z"
+   "feedVersion": "26SEP_20261009",
+   "updatedAt": "2026-10-12T13:26:17Z"
   },
   "osm": {
    "name": "OpenStreetMap contributors (BBBike Vancouver extract)",
    "url": "https://download.bbbike.org/osm/bbbike/Vancouver/Vancouver.osm.pbf",
-   "dataAt": "2026-09-25T23:00:00.000Z",
-   "updatedAt": "2026-10-01T00:10:55Z"
+   "dataAt": "2026-10-09T23:00:00.000Z",
+   "updatedAt": "2026-10-12T13:26:17Z"
   }
  },
  "layers": {
@@ -65,30 +65,26 @@
    "geometry": "polygon",
    "licence": "ODbL-1.0 + OGL-Vancouver",
    "schemaVersion": 1,
-   "updatedAt": "2026-10-01T00:10:55Z",
-   "count": 167506,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 167554,
    "cells": 244,
-   "bytes": 86502773,
-   "gzBytes": 9946352,
-   "maxGz": 129558,
-   "hash": "8b92ab8efbacc5c5",
-   "stale": true,
-   "error": "fetch failed"
+   "bytes": 86553670,
+   "gzBytes": 9956308,
+   "maxGz": 129576,
+   "hash": "8f2dafbd9f8f36c9"
   },
   "streets": {
    "source": "osm",
    "geometry": "line",
    "licence": "ODbL-1.0",
    "schemaVersion": 1,
-   "updatedAt": "2026-10-01T00:07:25Z",
-   "count": 33152,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 33299,
    "cells": 245,
-   "bytes": 21514039,
-   "gzBytes": 2147005,
-   "maxGz": 25073,
-   "hash": "a6afb794146504b1",
-   "stale": true,
-   "error": "fetch failed"
+   "bytes": 21606746,
+   "gzBytes": 2156341,
+   "maxGz": 25065,
+   "hash": "b53e5808d48c06f5"
   },
   "bikeways": {
    "source": "cov",
@@ -134,26 +130,26 @@
    "geometry": "line",
    "licence": "ODbL-1.0 + OGL-Vancouver + TransLink GTFS (derived)",
    "schemaVersion": 1,
-   "updatedAt": "2026-10-04T04:01:51Z",
-   "count": 119436,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 119070,
    "cells": 235,
-   "bytes": 67233207,
-   "gzBytes": 3843517,
-   "maxGz": 44473,
-   "hash": "1d33e72ee92f8d4d"
+   "bytes": 67038320,
+   "gzBytes": 3832787,
+   "maxGz": 44472,
+   "hash": "690375e1974db37f"
   },
   "bus-routes": {
    "source": "gtfs",
    "geometry": "line",
    "licence": "TransLink GTFS",
    "schemaVersion": 1,
-   "updatedAt": "2026-10-05T13:10:23Z",
+   "updatedAt": "2026-10-12T13:26:17Z",
    "count": 516,
    "cells": 191,
-   "bytes": 2589591,
-   "gzBytes": 174205,
+   "bytes": 2590122,
+   "gzBytes": 174219,
    "maxGz": 4560,
-   "hash": "c53538c9b059f417"
+   "hash": "279b55d287b3f270"
   },
   "row-width": {
    "source": "cov",
@@ -173,39 +169,39 @@
    "geometry": "point",
    "licence": "TransLink GTFS + ODbL-1.0",
    "schemaVersion": 1,
-   "updatedAt": "2026-10-05T13:10:23Z",
-   "count": 2340,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 2341,
    "cells": 184,
-   "bytes": 801230,
-   "gzBytes": 125978,
-   "maxGz": 2340,
-   "hash": "fb4d81296742cd41"
+   "bytes": 829908,
+   "gzBytes": 140554,
+   "maxGz": 2715,
+   "hash": "d5f2be53a42acd32"
   },
   "hydrants": {
    "source": "cov",
    "geometry": "point",
    "licence": "OGL-Vancouver",
    "schemaVersion": 1,
-   "updatedAt": "2026-09-30T17:46:05Z",
-   "count": 6613,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 6612,
    "cells": 141,
-   "bytes": 1854875,
-   "gzBytes": 157122,
-   "maxGz": 2292,
-   "hash": "e756fccb889295a3"
+   "bytes": 1854597,
+   "gzBytes": 151172,
+   "maxGz": 2181,
+   "hash": "9b6d177c499d49e9"
   },
   "trees": {
    "source": "cov",
    "geometry": "point",
    "licence": "OGL-Vancouver",
    "schemaVersion": 1,
-   "updatedAt": "2026-09-30T17:46:05Z",
-   "count": 184421,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 184376,
    "cells": 144,
-   "bytes": 69563159,
-   "gzBytes": 5038090,
-   "maxGz": 107956,
-   "hash": "1cde40e28127127d"
+   "bytes": 69546271,
+   "gzBytes": 4502398,
+   "maxGz": 94844,
+   "hash": "6f3b4ef1d11b1fb5"
   },
   "transit-stations": {
    "source": "cov",
@@ -225,15 +221,13 @@
    "geometry": "point",
    "licence": "ODbL-1.0",
    "schemaVersion": 1,
-   "updatedAt": "2026-09-30T17:46:05Z",
-   "count": 24346,
+   "updatedAt": "2026-10-12T13:26:17Z",
+   "count": 24676,
    "cells": 232,
-   "bytes": 8002487,
-   "gzBytes": 806044,
+   "bytes": 8110850,
+   "gzBytes": 814298,
    "maxGz": 40350,
-   "hash": "571cc657768d4b84",
-   "stale": true,
-   "error": "fetch failed"
+   "hash": "99f21848b669d395"
   }
  },
  "cells": {
@@ -244,13 +238,13 @@
     1
    ],
    "buildings": [
-    522,
-    54461,
+    520,
+    54227,
     1
    ],
    "streets": [
-    375,
-    20549,
+    374,
+    20511,
     1
    ],
    "bikeways": [
@@ -270,7 +264,7 @@
    ],
    "blockfaces": [
     1123,
-    39408,
+    39407,
     1
    ],
    "bus-routes": [
@@ -285,17 +279,17 @@
    ],
    "bus-stops": [
     34,
-    1467,
+    1701,
     1
    ],
    "hydrants": [
     110,
-    2292,
+    2181,
     1
    ],
    "trees": [
-    1967,
-    53206,
+    1961,
+    47775,
     1
    ],
    "transit-stations": [
@@ -304,8 +298,8 @@
     1
    ],
    "pois": [
-    1067,
-    33589,
+    1066,
+    33656,
     1
    ]
   },
@@ -316,13 +310,13 @@
     1
    ],
    "buildings": [
-    108,
-    12855,
+    105,
+    12544,
     1
    ],
    "streets": [
-    130,
-    8370,
+    127,
+    8238,
     1
    ],
    "bikeways": [
@@ -337,7 +331,7 @@
    ],
    "blockfaces": [
     299,
-    11169,
+    11168,
     1
    ],
    "bus-routes": [
@@ -352,22 +346,22 @@
    ],
    "bus-stops": [
     7,
-    548,
+    606,
     1
    ],
    "hydrants": [
     32,
-    835,
+    806,
     1
    ],
    "trees": [
     1015,
-    26636,
+    23736,
     1
    ],
    "pois": [
-    253,
-    7128,
+    254,
+    7183,
     1
    ]
   },
@@ -378,8 +372,8 @@
     1
    ],
    "buildings": [
-    391,
-    43516,
+    392,
+    43804,
     1
    ],
    "streets": [
@@ -404,7 +398,7 @@
    ],
    "blockfaces": [
     1189,
-    41381,
+    41386,
     1
    ],
    "bus-routes": [
@@ -419,17 +413,17 @@
    ],
    "bus-stops": [
     31,
-    1333,
+    1558,
     1
    ],
    "hydrants": [
     97,
-    2049,
+    1957,
     1
    ],
    "trees": [
-    2321,
-    57538,
+    2318,
+    51531,
     1
    ],
    "transit-stations": [
@@ -439,7 +433,7 @@
    ],
    "pois": [
     1154,
-    34577,
+    34625,
     1
    ]
   },
@@ -451,12 +445,12 @@
    ],
    "buildings": [
     390,
-    39797,
+    39798,
     1
    ],
    "streets": [
-    348,
-    18738,
+    349,
+    18769,
     1
    ],
    "bikeways": [
@@ -475,8 +469,8 @@
     1
    ],
    "blockfaces": [
-    1095,
-    39087,
+    1088,
+    38898,
     1
    ],
    "bus-routes": [
@@ -491,17 +485,17 @@
    ],
    "bus-stops": [
     58,
-    2340,
+    2715,
     1
    ],
    "hydrants": [
     88,
-    1883,
+    1789,
     1
    ],
    "trees": [
     993,
-    25805,
+    23409,
     1
    ],
    "transit-stations": [
@@ -533,12 +527,12 @@
    ],
    "trees": [
     31,
-    1089,
+    1073,
     1
    ],
    "pois": [
     60,
-    1885,
+    1852,
     1
    ]
   },
@@ -575,7 +569,7 @@
    ],
    "blockfaces": [
     772,
-    28072,
+    28073,
     1
    ],
    "bus-routes": [
@@ -590,17 +584,17 @@
    ],
    "bus-stops": [
     16,
-    911,
+    1019,
     1
    ],
    "hydrants": [
     66,
-    1490,
+    1424,
     1
    ],
    "trees": [
-    1315,
-    33912,
+    1313,
+    30409,
     1
    ],
    "transit-stations": [
@@ -610,7 +604,7 @@
    ],
    "pois": [
     739,
-    21004,
+    20960,
     1
    ]
   },
@@ -622,12 +616,12 @@
    ],
    "buildings": [
     2092,
-    117238,
+    117273,
     1
    ],
    "streets": [
     266,
-    14619,
+    14604,
     1
    ],
    "bikeways": [
@@ -647,12 +641,12 @@
    ],
    "blockfaces": [
     1111,
-    33724,
+    33706,
     1
    ],
    "bus-routes": [
     21,
-    730,
+    731,
     1
    ],
    "row-width": [
@@ -662,22 +656,22 @@
    ],
    "bus-stops": [
     14,
-    687,
+    771,
     1
    ],
    "hydrants": [
     69,
-    1501,
+    1447,
     1
    ],
    "trees": [
-    1848,
-    50162,
+    1847,
+    45138,
     1
    ],
    "pois": [
-    218,
-    7313,
+    220,
+    7320,
     1
    ]
   },
@@ -689,12 +683,12 @@
    ],
    "buildings": [
     287,
-    29121,
+    29222,
     1
    ],
    "streets": [
-    292,
-    15641,
+    296,
+    15773,
     1
    ],
    "bikeways": [
@@ -713,8 +707,8 @@
     1
    ],
    "blockfaces": [
-    756,
-    24464,
+    758,
+    24557,
     1
    ],
    "bus-routes": [
@@ -729,17 +723,17 @@
    ],
    "bus-stops": [
     16,
-    853,
+    956,
     1
    ],
    "hydrants": [
     60,
-    1366,
+    1311,
     1
    ],
    "trees": [
     1169,
-    31704,
+    27784,
     1
    ],
    "transit-stations": [
@@ -748,8 +742,8 @@
     1
    ],
    "pois": [
-    157,
-    5107,
+    158,
+    5138,
     1
    ]
   },
@@ -761,12 +755,12 @@
    ],
    "buildings": [
     818,
-    48733,
+    48757,
     1
    ],
    "streets": [
-    232,
-    13144,
+    234,
+    13218,
     1
    ],
    "bikeways": [
@@ -780,13 +774,13 @@
     1
    ],
    "blockfaces": [
-    817,
-    24598,
+    819,
+    24673,
     1
    ],
    "bus-routes": [
     11,
-    494,
+    493,
     1
    ],
    "row-width": [
@@ -796,22 +790,22 @@
    ],
    "bus-stops": [
     9,
-    529,
+    578,
     1
    ],
    "hydrants": [
     67,
-    1497,
+    1446,
     1
    ],
    "trees": [
     1798,
-    49514,
+    43804,
     1
    ],
    "pois": [
-    65,
-    2546,
+    66,
+    2579,
     1
    ]
   },
@@ -823,12 +817,12 @@
    ],
    "buildings": [
     1585,
-    95337,
+    95344,
     1
    ],
    "streets": [
     284,
-    15307,
+    15304,
     1
    ],
    "bikeways": [
@@ -843,12 +837,12 @@
    ],
    "blockfaces": [
     1035,
-    32618,
+    32622,
     1
    ],
    "bus-routes": [
     29,
-    989,
+    988,
     1
    ],
    "row-width": [
@@ -858,17 +852,17 @@
    ],
    "bus-stops": [
     16,
-    806,
+    909,
     1
    ],
    "hydrants": [
     72,
-    1555,
+    1496,
     1
    ],
    "trees": [
-    1802,
-    50631,
+    1801,
+    45167,
     1
    ],
    "transit-stations": [
@@ -878,7 +872,7 @@
    ],
    "pois": [
     187,
-    6120,
+    6100,
     1
    ]
   },
@@ -890,12 +884,12 @@
    ],
    "buildings": [
     1400,
-    86990,
+    87176,
     1
    ],
    "streets": [
-    293,
-    15874,
+    292,
+    15825,
     1
    ],
    "bikeways": [
@@ -910,7 +904,7 @@
    ],
    "blockfaces": [
     1114,
-    35472,
+    35473,
     1
    ],
    "bus-routes": [
@@ -925,17 +919,17 @@
    ],
    "bus-stops": [
     24,
-    1010,
+    1148,
     1
    ],
    "hydrants": [
     75,
-    1620,
+    1537,
     1
    ],
    "trees": [
     1790,
-    49023,
+    43689,
     1
    ],
    "transit-stations": [
@@ -944,8 +938,8 @@
     1
    ],
    "pois": [
-    279,
-    9161,
+    282,
+    9287,
     1
    ]
   },
@@ -962,7 +956,7 @@
    ],
    "streets": [
     272,
-    15425,
+    15438,
     1
    ],
    "bikeways": [
@@ -977,12 +971,12 @@
    ],
    "blockfaces": [
     1295,
-    38531,
+    38534,
     1
    ],
    "bus-routes": [
     19,
-    639,
+    640,
     1
    ],
    "row-width": [
@@ -992,22 +986,22 @@
    ],
    "bus-stops": [
     15,
-    730,
+    829,
     1
    ],
    "hydrants": [
     83,
-    1773,
+    1704,
     1
    ],
    "trees": [
     1523,
-    42784,
+    37857,
     1
    ],
    "pois": [
     275,
-    9290,
+    9327,
     1
    ]
   },
@@ -1019,12 +1013,12 @@
    ],
    "buildings": [
     1096,
-    65944,
+    65980,
     1
    ],
    "streets": [
     204,
-    11396,
+    11392,
     1
    ],
    "bikeways": [
@@ -1044,7 +1038,7 @@
    ],
    "bus-routes": [
     39,
-    948,
+    947,
     1
    ],
    "row-width": [
@@ -1054,22 +1048,22 @@
    ],
    "bus-stops": [
     11,
-    637,
+    708,
     1
    ],
    "hydrants": [
     51,
-    1189,
+    1163,
     1
    ],
    "trees": [
     1970,
-    55838,
+    48088,
     1
    ],
    "pois": [
     44,
-    1601,
+    1589,
     1
    ]
   },
@@ -1081,12 +1075,12 @@
    ],
    "buildings": [
     2381,
-    123488,
+    123499,
     1
    ],
    "streets": [
     174,
-    11122,
+    11125,
     1
    ],
    "bikeways": [
@@ -1101,7 +1095,7 @@
    ],
    "blockfaces": [
     1212,
-    35092,
+    35091,
     1
    ],
    "bus-routes": [
@@ -1116,22 +1110,22 @@
    ],
    "bus-stops": [
     8,
-    531,
+    584,
     1
    ],
    "hydrants": [
     74,
-    1599,
+    1527,
     1
    ],
    "trees": [
-    2111,
-    57984,
+    2110,
+    51970,
     1
    ],
    "pois": [
     35,
-    1574,
+    1569,
     1
    ]
   },
@@ -1143,12 +1137,12 @@
    ],
    "buildings": [
     2079,
-    104132,
+    104131,
     1
    ],
    "streets": [
     206,
-    12484,
+    12485,
     1
    ],
    "bikeways": [
@@ -1163,12 +1157,12 @@
    ],
    "blockfaces": [
     1167,
-    33984,
+    33986,
     1
    ],
    "bus-routes": [
     20,
-    466,
+    467,
     1
    ],
    "row-width": [
@@ -1178,22 +1172,22 @@
    ],
    "bus-stops": [
     4,
-    388,
+    419,
     1
    ],
    "hydrants": [
     74,
-    1638,
+    1529,
     1
    ],
    "trees": [
     2086,
-    59461,
+    52291,
     1
    ],
    "pois": [
-    26,
-    1302,
+    27,
+    1316,
     1
    ]
   },
@@ -1215,7 +1209,7 @@
    ],
    "blockfaces": [
     102,
-    3751,
+    3750,
     1
    ],
    "row-width": [
@@ -1225,12 +1219,12 @@
    ],
    "hydrants": [
     8,
-    395,
+    391,
     1
    ],
    "trees": [
     9,
-    547,
+    544,
     1
    ],
    "pois": [
@@ -1247,7 +1241,7 @@
    ],
    "buildings": [
     734,
-    34027,
+    34026,
     1
    ],
    "streets": [
@@ -1282,17 +1276,17 @@
    ],
    "bus-stops": [
     5,
-    444,
+    471,
     1
    ],
    "hydrants": [
     44,
-    1075,
+    1047,
     1
    ],
    "trees": [
     495,
-    13600,
+    12243,
     1
    ],
    "pois": [
@@ -1334,7 +1328,7 @@
    ],
    "bus-routes": [
     4,
-    362,
+    361,
     1
    ],
    "row-width": [
@@ -1344,22 +1338,22 @@
    ],
    "bus-stops": [
     1,
-    293,
+    303,
     1
    ],
    "hydrants": [
     33,
-    856,
+    829,
     1
    ],
    "trees": [
     1371,
-    35335,
+    30808,
     1
    ],
    "pois": [
     7,
-    512,
+    507,
     1
    ]
   },
@@ -1396,12 +1390,12 @@
    ],
    "hydrants": [
     22,
-    653,
+    643,
     1
    ],
    "trees": [
     202,
-    5670,
+    5406,
     1
    ],
    "pois": [
@@ -1453,17 +1447,17 @@
    ],
    "bus-stops": [
     17,
-    835,
+    946,
     1
    ],
    "hydrants": [
     46,
-    1105,
+    1057,
     1
    ],
    "trees": [
     896,
-    24511,
+    22312,
     1
    ],
    "pois": [
@@ -1515,22 +1509,22 @@
    ],
    "bus-stops": [
     9,
-    491,
+    542,
     1
    ],
    "hydrants": [
     40,
-    983,
+    931,
     1
    ],
    "trees": [
     1635,
-    42170,
+    37559,
     1
    ],
    "pois": [
     25,
-    1001,
+    996,
     1
    ]
   },
@@ -1562,7 +1556,7 @@
    ],
    "blockfaces": [
     153,
-    5356,
+    5357,
     1
    ],
    "row-width": [
@@ -1572,17 +1566,17 @@
    ],
    "hydrants": [
     16,
-    558,
+    535,
     1
    ],
    "trees": [
     1848,
-    45793,
+    40614,
     1
    ],
    "pois": [
     1,
-    272,
+    271,
     1
    ]
   },
@@ -1594,7 +1588,7 @@
    ],
    "buildings": [
     1092,
-    59675,
+    59674,
     1
    ],
    "streets": [
@@ -1614,12 +1608,12 @@
    ],
    "blockfaces": [
     770,
-    23618,
+    23617,
     1
    ],
    "bus-routes": [
     12,
-    632,
+    633,
     1
    ],
    "row-width": [
@@ -1629,22 +1623,22 @@
    ],
    "bus-stops": [
     15,
-    742,
+    853,
     1
    ],
    "hydrants": [
     55,
-    1268,
+    1213,
     1
    ],
    "trees": [
     1424,
-    38447,
+    34075,
     1
    ],
    "pois": [
     54,
-    2179,
+    2129,
     1
    ]
   },
@@ -1656,7 +1650,7 @@
    ],
    "streets": [
     90,
-    6553,
+    6552,
     1
    ],
    "bikeways": [
@@ -1671,12 +1665,12 @@
    ],
    "blockfaces": [
     681,
-    19281,
+    19280,
     1
    ],
    "bus-routes": [
     4,
-    376,
+    377,
     1
    ],
    "row-width": [
@@ -1686,22 +1680,22 @@
    ],
    "bus-stops": [
     4,
-    389,
+    421,
     1
    ],
    "hydrants": [
     47,
-    1116,
+    1067,
     1
    ],
    "trees": [
     1616,
-    43624,
+    38616,
     1
    ],
    "pois": [
     9,
-    598,
+    606,
     1
    ]
   },
@@ -1718,7 +1712,7 @@
    ],
    "streets": [
     199,
-    12568,
+    12567,
     1
    ],
    "bikeways": [
@@ -1753,22 +1747,22 @@
    ],
    "bus-stops": [
     18,
-    822,
+    944,
     1
    ],
    "hydrants": [
     55,
-    1255,
+    1221,
     1
    ],
    "trees": [
-    1453,
-    40531,
+    1451,
+    37124,
     1
    ],
    "pois": [
     473,
-    13110,
+    13105,
     1
    ]
   },
@@ -1779,13 +1773,13 @@
     1
    ],
    "buildings": [
-    230,
-    24994,
+    229,
+    24935,
     1
    ],
    "streets": [
-    256,
-    15408,
+    255,
+    15373,
     1
    ],
    "bikeways": [
@@ -1805,12 +1799,12 @@
    ],
    "blockfaces": [
     473,
-    16493,
+    16492,
     1
    ],
    "bus-routes": [
     55,
-    1525,
+    1526,
     1
    ],
    "row-width": [
@@ -1820,22 +1814,22 @@
    ],
    "bus-stops": [
     9,
-    670,
+    740,
     1
    ],
    "hydrants": [
     38,
-    934,
+    923,
     1
    ],
    "trees": [
     2396,
-    67253,
+    58864,
     1
    ],
    "pois": [
     406,
-    11433,
+    11490,
     1
    ]
   },
@@ -1852,7 +1846,7 @@
    ],
    "streets": [
     231,
-    12464,
+    12468,
     1
    ],
    "bikeways": [
@@ -1872,12 +1866,12 @@
    ],
    "blockfaces": [
     356,
-    12798,
+    12799,
     1
    ],
    "bus-routes": [
     95,
-    1759,
+    1758,
     1
    ],
    "row-width": [
@@ -1887,22 +1881,22 @@
    ],
    "bus-stops": [
     3,
-    373,
+    400,
     1
    ],
    "hydrants": [
     26,
-    750,
+    725,
     1
    ],
    "trees": [
     1030,
-    28006,
+    25165,
     1
    ],
    "pois": [
-    312,
-    9535,
+    313,
+    9554,
     1
    ]
   }
